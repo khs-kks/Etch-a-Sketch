@@ -1,3 +1,17 @@
+let black = true;
+let rgb = false;
+
+function changeRGB(square) {
+    let color = 'rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+    square.style.backgroundColor = color;
+    square.style.border = '1px solid black';
+};
+
+function changeBlack(square) {
+    square.style.backgroundColor = 'black';
+    square.style.border = '1px solid white';
+};
+
 // Create 16x16 grid of square divs
 
 
@@ -16,7 +30,12 @@ function populateGrid (numberSquares) {
         single_square.style.width = `${singleSquareWidth}px`; // 2px for borders
         single_square.style.height = `${singleSquareWidth}px`; // 2px for borders
         single_square.addEventListener('mouseenter', () => {
-            single_square.style.backgroundColor = 'black';
+            // single_square.style.backgroundColor = 'black';
+            if (black) {
+                changeBlack(single_square);
+            } else if (rgb) {
+                changeRGB(single_square);
+            }
             
         })
 
@@ -40,8 +59,9 @@ function removeGrid () {
 
 //Button
 
-const button = document.querySelector('button');
-
+const button = document.querySelector('.grid');
+const buttonBLACK = document.querySelector('.black');
+const buttonRGB = document.querySelector('.rgb');
 
 button.addEventListener('click', () => {
     // let newGrid = 0;
@@ -52,6 +72,16 @@ button.addEventListener('click', () => {
     } else {
         alert("Rows must be between 2 and 100 !!!!");
     }
+})
+
+buttonBLACK.addEventListener('click', () => {
+    black = true;
+    rgb = false;
+})
+
+buttonRGB.addEventListener('click', () => {
+    black = false;
+    rgb = true;
 })
 
 

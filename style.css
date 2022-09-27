@@ -7,6 +7,16 @@
     justify-content: space-evenly;
 }
 
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    padding-top: 40px;
+}
+
 .test {
     border: 1px solid green;
     height: 248px;
